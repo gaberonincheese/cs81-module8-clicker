@@ -18,19 +18,50 @@
     <script>
         let collectedDogs = 0;
         const dogButton = document.getElementById("dogButton");
-        const dogBark = new Audio("dragon-studio-dog-bark-382732.mp3");
+        //const dogBark = new Audio("dragon-studio-dog-bark-382732.mp3");
+        const dogBarks = ["dragon-studio-dog-bark-382732.mp3", "alexzavesa-dog-bark-5-468445.mp3",
+            "dragon-studio-free-dog-bark-419014.mp3", "freesound_community-sniffing-dog-102739.mp3", 
+            "yodguard-friendly-small-dog-bark-1-535470.mp3"];
+        let currentBark = null;
 
         dogButton.addEventListener("click", () => {
             collectedDogs++;
             document.getElementById("numDogs").innerHTML = collectedDogs;
 
-            if (collectedDogs == 10) {
-                document.getElementById("text").innerHTML = "You're just getting started...";
-                dogButton.addEventListener("click", dogBark.play());
+            if (collectedDogs == 5) {
+               setText("You're just now beginning your dog-collecting journey!");
+               playBark();
+            } else if (collectedDogs == 25) {
+                setText("Gee, you're gonna need a bigger space to accommodate all these dogs!");
+                playBark();
+            } else if (collectedDogs == 50) {
+                setText("Slow down, bucko! There's so many dogs they're spilling out the door!")
+                playBark();
+            } else if (collectedDogs == 100) {
+                setText("The dogs are overtaking you! I can't even see you in between all the dogs!")
             }
 
 
         })
+
+        function setText(chosenText) {
+            document.getElementById("text").innerHTML = chosenText;
+            //dogButton.addEventListener("click", dogBark.play());
+        }
+
+        function playBark() {
+            if (currentBark) {
+                currentBark.pause();
+                currentBark.currentTime = 0;
+            }
+
+            const audioIndex = Math.floor(Math.random() * dogBarks.length);
+            const newBark = new Audio(dogBarks[audioIndex]);
+                
+            currentBark = newBark;
+
+            dogButton.addEventListener("click", currentBark.play());     
+        }
 
     </script>
 
