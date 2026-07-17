@@ -2,16 +2,26 @@
 <html lang = "en">
 <head>  
     <meta charset="UTF-8">
-    <title>Cookie Clicker Time!</title>
+    <title>Dog Collector Time!</title>
 </head>
 
 <body style="font-family: cursive; text-align: center; padding-top: 60px; background-color: #eef;">
 
-<h1>Cookie Clicker Time!</h1>
+<h1>Dog Collector Time!</h1>
 <div id="output" style="margin-top: 40px; font-size: 1.5rem;"> </div>
 
+<p> Get ready to collect some dogs!</p>
+<p> Dog count: <span id = "numDogs"> 0</span> </p>
+
+<button id = "dogButton"> Collect Dog! </button>
+
 <script>
-    // I'll put the code here.
+    let collectedDogs = 0;
+    //let dogsAdded = 1;
+    const dogButton = document.getElementById("dogButton");
+
+    dogButton.addEventListener("click", () => { collectedDogs++; document.getElementById("numDogs").innerHTML = collectedDogs; })
+
 </script>
 
 </body>
