@@ -1,28 +1,39 @@
 <!DOCTYPE html>
-<html lang = "en">
-<head>  
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
     <title>Dog Collector Time!</title>
 </head>
 
-<body style="font-family: cursive; text-align: center; padding-top: 60px; background-color: #eef;">
+<body style="font-family: cursive; text-align: center; padding-top: 60px; background-color: rgb(114, 219, 252);">
 
-<h1>Dog Collector Time!</h1>
-<div id="output" style="margin-top: 40px; font-size: 1.5rem;"> </div>
+    <h1>Dog Collector Time!</h1>
 
-<p> Get ready to collect some dogs!</p>
-<p> Dog count: <span id = "numDogs"> 0</span> </p>
+    <p> <span id="text"> Get ready to collect some dogs! </span> </p>
+    <p> Dog count: <span id="numDogs"> 0 </span> </p>
 
-<button id = "dogButton"> Collect Dog! </button>
+    <button style="font-size: 50px; width: 200px; height: 100px" id="dogButton"> 🐕 </button>
 
-<script>
-    let collectedDogs = 0;
-    //let dogsAdded = 1;
-    const dogButton = document.getElementById("dogButton");
+    <script>
+        let collectedDogs = 0;
+        const dogButton = document.getElementById("dogButton");
+        const dogBark = new Audio("dragon-studio-dog-bark-382732.mp3");
 
-    dogButton.addEventListener("click", () => { collectedDogs++; document.getElementById("numDogs").innerHTML = collectedDogs; })
+        dogButton.addEventListener("click", () => {
+            collectedDogs++;
+            document.getElementById("numDogs").innerHTML = collectedDogs;
 
-</script>
+            if (collectedDogs == 10) {
+                document.getElementById("text").innerHTML = "You're just getting started...";
+                dogButton.addEventListener("click", dogBark.play());
+            }
+
+
+        })
+
+    </script>
 
 </body>
+
 </html>
